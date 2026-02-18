@@ -27,7 +27,7 @@ def index():
                 research=1
             else:
                 research=0
-            filename = 'admission_lr_model.pickle'
+            filename = 'finalized_model.pickle'
             loaded_model = pickle.load(open(filename, 'rb')) #loading the model file from the storage
             #predictions using the loaded model file
             prediction=loaded_model.predict([[gre_score,toefl_score,university_rating,sop,lor,cgpa,research]])
