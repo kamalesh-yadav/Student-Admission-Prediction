@@ -1,28 +1,86 @@
 {% extends 'base.html' %}
 
 {% block head %}
-
-<title>Search Page</title>
+<title>Admission Prediction</title>
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 {% endblock %}
 
 {% block body %}
 <div class="content">
-    <h1 style="text-align: center">Predict Your chances for Admission</h1>
+    <h1 style="text-align: center;">Predict Your Chances for Admission</h1>
 
     <div class="form">
         <form action="/predict" method="POST">
-            <input type="number" name="gre_score" id="gre_score" placeholder="GRE Score">
-            <input type="number" name="toefl_score" id="toefl_score" placeholder="TOEFL Score">
-            <input type="number" name="university_rating" id="university_rating" placeholder="University Rating">
-            <input type="number" name="sop" id="sop" placeholder="SOP Score">
-            <input type="number" name="lor" id="lor" placeholder="LOR Score">
-            <input type="number" name="cgpa" id="cgpa"placeholder="CGPA" step="any">
-            <select name="research" id="research">
-  <option value="yes">Yes</option>
-  <option value="no">No</option>
-</select>
+
+            <!-- GRE Score (260–340) -->
+            <input type="number" 
+                   name="gre_score" 
+                   id="gre_score" 
+                   placeholder="GRE Score (260–340)" 
+                   min="260" 
+                   max="340" 
+                   step="1" 
+                   required>
+
+            <!-- TOEFL Score (0–120) -->
+            <input type="number" 
+                   name="toefl_score" 
+                   id="toefl_score" 
+                   placeholder="TOEFL Score (0–120)" 
+                   min="0" 
+                   max="120" 
+                   step="1" 
+                   required>
+
+            <!-- University Rating (1–5) -->
+            <input type="number" 
+                   name="university_rating" 
+                   id="university_rating" 
+                   placeholder="University Rating (1–5)" 
+                   min="1" 
+                   max="5" 
+                   step="0.1" 
+                   required>
+
+            <!-- SOP (1–5) -->
+            <input type="number" 
+                   name="sop" 
+                   id="sop" 
+                   placeholder="SOP Strength (1–5)" 
+                   min="1" 
+                   max="5" 
+                   step="0.1" 
+                   required>
+
+            <!-- LOR (1–5) -->
+            <input type="number" 
+                   name="lor" 
+                   id="lor" 
+                   placeholder="LOR Strength (1–5)" 
+                   min="1" 
+                   max="5" 
+                   step="0.1" 
+                   required>
+
+            <!-- CGPA (0–10) -->
+            <input type="number" 
+                   name="cgpa" 
+                   id="cgpa" 
+                   placeholder="CGPA (0–10)" 
+                   min="0" 
+                   max="10" 
+                   step="0.01" 
+                   required>
+
+            <!-- Research -->
+            <select name="research" id="research" required>
+                <option value="" disabled selected>Select Research Experience</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+
             <input type="submit" value="Predict">
+
         </form>
     </div>
 </div>
